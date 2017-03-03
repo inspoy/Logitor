@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="index.js"></script>
+    <!--解决electron和jQuery的冲突-->
+    <script type="text/javascript">
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <!--jQuery-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!--bootstrap-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--material ui-->
+    <script type="text/javascript"
+            src="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/js/material.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/css/ripples.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
+    <!--解决electron和jQuery的冲突-->
+    <script type="text/javascript">
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+    <!--custom js,css-->
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<h1>Hello</h1>
+<!--内容-->
+<div class="navbar navbar-default app-header">
+    <div class="container-fluid">
+        <div class="app-title">
+            <h1>Logitor</h1>
+        </div>
+    </div>
+</div>
+<div class="app-content container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div>
+                <h1>RTL</h1>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <h1>Logitor</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!--初始化-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("页面加载完毕");
+        $.material.init();
+        console.log("UI初始化完毕");
+        let res = logitor.init();
+        if (false == res) {
+            alert("初始化出错!详情请查看console");
+        }
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+body {
+    background-color: #aaaaaa;
+}
+
+.app-header {
+    height: 200px;
+}
+
+.app-title {
+    width: 90%;
+    margin: auto;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.app-content {
+    background-color: white;
+    margin: auto;
+    position: absolute;
+    padding: 10px 20px 40px 20px;
+    width: 90%;
+    height: 720px;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
