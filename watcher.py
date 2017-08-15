@@ -1,8 +1,10 @@
 import time
 import os
 import sys
+import conf
 
-g_folder_name = "C:/Users/inspo/AppData/LocalLow/DefaultCompany/CardAdv/"
+g_folder_name = conf.folder_name
+g_log_file_prefix = "GameLog"
 g_log_count = 0
 
 
@@ -14,12 +16,13 @@ def output(msg):
 def check_new():
     latest = 0
     global g_folder_name
+    global g_log_file_prefix
     global g_log_count
     files = os.listdir(g_folder_name)
     g_log_count = 0
     for filename in files:
         try:
-            if not filename.startswith("GameLog"):
+            if not filename.startswith(g_log_file_prefix):
                 continue
             g_log_count += 1
             date = int(filename[7:len(filename) - 4])
@@ -27,7 +30,7 @@ def check_new():
                 latest = date
         except ValueError:
             pass
-    return "GameLog%d.txt" % latest
+    return "%s%d.txt" % (g_log_file_prefix, latest)
     pass  # end of check_new
 
 
