@@ -1,34 +1,18 @@
-/**
- * Created by inspoy on 2017/3/3.
- */
-'use strict';
-
-const {app, BrowserWindow} = require('electron');
-const path = require('path');
-const url = require('url');
-
-let win = null;
-
-const createWindow = function () {
-    win = new BrowserWindow({
-        width: 1600,
-        height: 900,
-        resizable: false
-    });
-
-    win.loadURL(url.format({
-        pathname: path.join(__dirname, 'app/index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
-
-    win.on('closed', function () {
+const electron = require('electron');
+const {Menu} = electron
+const {app} = electron;
+const {BrowserWindow} = electron;
+let win;
+const  createWindow = function() {
+    win = new BrowserWindow();
+    win.loadURL(`file://${__dirname}/index.html`);
+    win.on('closed', () => {
         win = null;
     });
+    // Menu.setApplicationMenu(null)
 };
 
 app.on('ready', createWindow);
-
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
     app.quit();
 });

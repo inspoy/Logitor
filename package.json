@@ -1,21 +1,14 @@
 {
-  "name": "logitor",
-  "version": "0.0.1",
-  "main": "./main.js",
+  "name": "UnityLog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/inspoy/Logitor.git"
+  "dependencies":{
+      "electron": " ^1.6.11"
   },
-  "devDependencies": {
-    "electron": "^1.6.1"
-  },
-  "license": "MIT",
-  "description": "A Real Time Log Monitor by Electron",
-  "author": "inspoy <inspoy@163.com> (http://inspoy.cc/)",
-  "bugs": {
-    "url": "https://github.com/inspoy/Logitor/issues"
-  }
+  "author": "",
+  "license": "ISC"
 }

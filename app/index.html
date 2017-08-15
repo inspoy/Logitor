@@ -1,73 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <!--解决electron和jQuery的冲突-->
-    <script type="text/javascript">
-        if (typeof module === 'object') {
-            window.module = module;
-            module = undefined;
-        }
-    </script>
-    <!--jQuery-->
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!--bootstrap-->
-    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--material ui-->
-    <script type="text/javascript"
-            src="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/js/material.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/css/ripples.min.css">
-    <link rel="stylesheet"
-          href="https://cdn.bootcss.com/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
-    <!--解决electron和jQuery的冲突-->
-    <script type="text/javascript">
-        if (window.module) {
-            module = window.module;
-        }
-    </script>
-    <!--custom js,css-->
-    <script type="text/javascript" src="index.js"></script>
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-<!--内容-->
-<div class="navbar navbar-default app-header">
-    <div class="container-fluid">
-        <div class="app-title">
-            <h1>Logitor</h1>
-        </div>
-    </div>
-</div>
-<div class="app-content container-fluid">
-    <div class="row">
-        <div class="col-md-9">
-            <div>
-                <h1>RTL</h1>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <title>Unity日志查看器</title>
+        <!-- jQuery -->
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+        <!-- 解决jQuery和Electron的冲突 -->
+        <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+        <!-- BootStrap -->
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- custom css -->
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="doc-main">
+        <div class="doc-part">
+        <div class="container">
+            <div id="upper">
+            <div></div>
+            <h1>Unity日志</h1>
+            <h2>文件名：</h2>
+            <blockquote id="filename">{filename}</blockquote>
+            <h2>游戏 <span id='game_name'>{game_name}</span> 的第 <span id="log_count"></span> 次运行开始于</h2>
+            <div class="row">
+                <div class="col-md-9">
+                    <p id="luanch_time">{luanch_time}</p>
+                </div>
+                <div class="col-md-3">
+                    <p style="text-align:right"><span id="warning_count">0</span>警告 <span id="error_count">0</span>错误</p>
+                </div>
+            </div>
+            <table class="table table-condensed table-hover doc-table-header" id="log_table_header">
+                <tr class="active">
+                    <th class="td-time">时间</th>
+                    <th class="td-type">类型</th>
+                    <th class="td-info">信息</th>
+                </tr>
+            </table>
+            </div>
+            <div class="doc-table">
+                <table class="table table-condensed table-hover" id="log_table">
+                    <tr class="active">
+                        <th class="td-time">时间</th>
+                        <th class="td-type">类型</th>
+                        <th class="td-info">信息</th>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="col-md-3">
-            <div>
-                <h1>Logitor</h1>
-            </div>
         </div>
-    </div>
-</div>
-<!--初始化-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        console.log("页面加载完毕");
-        $.material.init();
-        console.log("UI初始化完毕");
-        let res = logitor.init();
-        if (false == res) {
-            alert("初始化出错!详情请查看console");
-        }
-    });
-</script>
-</body>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
 </html>
