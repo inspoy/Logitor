@@ -4,7 +4,7 @@ let errorCount = 0;
 
 const refreshHeight = function() {
     // 适应页面高度
-    const mainHeight = window.innerHeight - 80; // container的高度
+    const mainHeight = window.innerHeight - 80; // container的高度，80是其margin和padding
     const upperHeight = $('#upper').height() + 20; // 20是h1的margin
     $('.doc-table').height(mainHeight - upperHeight);
 }
